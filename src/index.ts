@@ -3,7 +3,7 @@ import fs from 'fs'
 import yargs from 'yargs'
 import { getFileName } from "./utils"
 
-const { hideBin }  = require('yargs/helpers')
+import { hideBin } from 'yargs/helpers'
 
 function cli(argv: string[]) {
   return yargs(hideBin(argv))
@@ -15,12 +15,10 @@ function cli(argv: string[]) {
       return yargs.positional('abiFile', {
         describe: 'Input ABI JSON file',
         type: 'string'
-      })
-      .positional('contractName', {
+      })?.positional('contractName', {
         describe: 'Contract name',
         type: 'string'
-      })
-      .positional('outputFile', {
+      })?.positional('outputFile', {
         describe: 'Output typescript file',
         type: 'string'
       })
@@ -28,8 +26,8 @@ function cli(argv: string[]) {
     (argv: { abiFile: string, contractName?: string, outputFile?: string}) => {
       let abi;
       try {
-        // get contract file
-        let file = fs.readFileSync(argv.abiFile).toString('utf-8')
+        // get contract json file
+        const file = fs.readFileSync(argv.abiFile).toString('utf-8')
         abi = JSON.parse(file)
       } catch (e) {
         console.error('Cannot read/parse input ABI file')

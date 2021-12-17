@@ -87,8 +87,8 @@ export function generateTSCode(contractName: string, abi: ContractABI): string {
 
 	// Imports
 	res += 'import Web3 from "web3"\n' +
-		'import {Contract, CallOptions, SendOptions} from "web3-eth-contract"\n' +
-		'import {PromiEvent} from "web3-core";\n' +
+		'import { Contract, CallOptions, SendOptions } from "web3-eth-contract"\n' +
+		'import { PromiEvent } from "web3-core";\n' +
 		'import BigNumber from "bignumber.js";\n\n'
 
 	// Start class declaration
