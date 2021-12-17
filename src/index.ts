@@ -41,12 +41,11 @@ function cli(argv: string[]) {
         return
       }
       // generate typescript class
-      // const cName = argv.contractName || getFileName(argv.abiFile)
-      const cName = 'test'
+      const cName = argv.contractName || getFileName(argv.abiFile)
       const code = generateTSCode(cName, abi)
-      // const output = `./dist/${argv.outputFile || getFileName(argv.abiFile) || 'aaa'}.ts`
-      // const output = 'aaa.ts'
-      // fs.writeFileSync('aaa.ts', code)
+
+      const output =argv.outputFile ? `./${argv.outputFile}.ts` : `./abi/${getFileName(argv.abiFile)}.ts`
+      fs.writeFileSync(output, code)
     }
   ).help().argv
 }

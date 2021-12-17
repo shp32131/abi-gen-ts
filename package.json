@@ -1,12 +1,11 @@
 {
   "name": "abi-gen-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generator typescript code from contract abi file",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "node ./lib/index.js generate ./test/erc20.json ERC20 ./test/ERC20.ts",
-    "gen": "node ./lib/index.js generate",
-    "build": "npx tsc",
+    "test": "npx tsc && node ./lib/index.js generate ./test/erc20.json ERC20 ./test/ERC20.ts",
+    "gen": "npx tsc && node ./lib/index.js generate",
     "prepare": "husky install"
   },
   "repository": {
