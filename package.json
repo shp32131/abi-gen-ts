@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "test": "npx tsc && node ./lib/index.js generate ./test/erc20.json ERC20 ./test/ERC20.ts",
-    "gen": "npx tsc && node ./lib/index.js generate",
+    "build": "npx tsc && node ./lib/index.js generate",
     "prepare": "husky install"
   },
   "repository": {
