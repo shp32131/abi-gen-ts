@@ -4,7 +4,9 @@
   "description": "generator typescript code from contract abi file",
   "main": "./lib/index.js",
   "scripts": {
-    "test": "node ./test/index.js",
+    "test": "node ./lib/index.js generate ./test/erc20.json ERC20 ./test/ERC20.ts",
+    "gen": "node ./lib/index.js generate",
+    "build": "npx tsc",
     "prepare": "husky install"
   },
   "repository": {

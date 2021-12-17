@@ -1,6 +1,7 @@
 import { generateTSCode } from "./gen/generator"
 import fs from 'fs'
 import yargs from 'yargs'
+import { getFileName } from "./utils"
 
 const { hideBin }  = require('yargs/helpers')
 
@@ -24,9 +25,10 @@ function cli(argv: string[]) {
         type: 'string'
       })
     },
-    (argv: { abiFile: string, contractName: string, outputFile: string}) => {
+    (argv: { abiFile: string, contractName?: string, outputFile?: string}) => {
       let abi;
       try {
+        // get contract file
         let file = fs.readFileSync(argv.abiFile).toString('utf-8')
         abi = JSON.parse(file)
       } catch (e) {
@@ -34,12 +36,17 @@ function cli(argv: string[]) {
         return
       }
       if (!Array.isArray(abi)) {
-        //TODO transform abi be a array
+        //TODO: transform abi be a array
         console.error('ABI should be array')
         return
       }
-      const code = generateTSCode(argv.contractName, abi)
-      fs.writeFileSync(argv.outputFile, code)
+      // generate typescript class
+      // const cName = argv.contractName || getFileName(argv.abiFile)
+      const cName = 'test'
+      const code = generateTSCode(cName, abi)
+      // const output = `./dist/${argv.outputFile || getFileName(argv.abiFile) || 'aaa'}.ts`
+      // const output = 'aaa.ts'
+      // fs.writeFileSync('aaa.ts', code)
     }
   ).help().argv
 }
