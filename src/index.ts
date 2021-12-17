@@ -7,14 +7,15 @@ import { hideBin } from 'yargs/helpers'
 
 function cli(argv: string[]) {
   return yargs(hideBin(argv))
-  .usage('Usage: $0 generate [abiFile] [contractName] [outputFile]')
+  .usage('Usage: $0 [abiFile] [contractName] [outputFile]')
   .command(
     'generate [abiFile] [contractName] [outputFile]',
     'generate typescript class for given ABI',
     (yargs: any) => {
-      return yargs.positional('abiFile', {
+      yargs.positional('abiFile', {
         describe: 'Input ABI JSON file',
-        type: 'string'
+        type: 'string',
+        default: './'
       })?.positional('contractName', {
         describe: 'Contract name',
         type: 'string'
@@ -27,7 +28,8 @@ function cli(argv: string[]) {
       let abi;
       try {
         // get contract json file
-        const file = fs.readFileSync(argv.abiFile).toString('utf-8')
+        const abiFile = argv.abiFile || './src/contract-abi/erc20.json'
+        const file = fs.readFileSync(abiFile).toString('utf-8')
         abi = JSON.parse(file)
       } catch (e) {
         console.error('Cannot read/parse input ABI file')
