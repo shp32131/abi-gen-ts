@@ -1,0 +1,34 @@
+{
+  "name": "abi-gen-ts",
+  "version": "1.0.0",
+  "description": "generator typescript code from contract abi file",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "node ./test/index.js",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shp32131/abi-gen-ts.git"
+  },
+  "keywords": [
+    "smart",
+    "contract",
+    "typescript",
+    "abi",
+    "json"
+  ],
+  "author": "forrest.liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shp32131/abi-gen-ts/issues"
+  },
+  "homepage": "https://github.com/shp32131/abi-gen-ts#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.0",
+    "@types/yargs": "^17.0.7",
+    "husky": "^7.0.4",
+    "typescript": "^4.5.4",
+    "yargs": "^17.3.0"
+  }
+}
