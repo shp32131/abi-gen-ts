@@ -1,4 +1,4 @@
-import {ABIArgument} from "./abiArgument";
+import { ABIArgument } from "./abiArgument";
 
 export enum ABIStateMutability {
 	View = 'view',

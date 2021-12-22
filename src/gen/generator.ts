@@ -58,15 +58,9 @@ function prepareCallOutput(outputArgs: Array<ABIArgument>): string {
 
 // generator contract function
 function generateContractFunction(abi: ABI): string {
-	const optionsType = abi.stateMutability === ABIStateMutability.View
-		? 'CallOptions'
-		: 'SendOptions'
-	const outputType = abi.stateMutability === ABIStateMutability.View
-		? `Promise<${prepareCallOutput(abi.outputs)}>`
-		: `PromiEvent<Contract>`
-	const callFunction = abi.stateMutability === ABIStateMutability.View
-		? `call(options)`
-		: `send(options)`
+	const optionsType = abi.stateMutability === ABIStateMutability.View ? 'CallOptions' : 'SendOptions'
+	const outputType = abi.stateMutability === ABIStateMutability.View ? `Promise<${prepareCallOutput(abi.outputs)}>` : `PromiEvent<Contract>`
+	const callFunction = abi.stateMutability === ABIStateMutability.View ? `call(options)` : `send(options)`
 
 	if (abi.inputs.length === 0) {
 		return `${abi.name}(options?: ${optionsType}): ${outputType} {\n` +

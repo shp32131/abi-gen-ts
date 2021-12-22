@@ -2,8 +2,10 @@
 
 const argv = require('yargs/yargs')(process.argv.slice(2))
   .usage('Usage: $0 <command> [options]')
-  .command('count', 'Count the lines in a file')
-  .example('$0 count -f foo.js', 'count the lines in the given file')
+  .command(
+    'count',
+    'Count the lines in a file'
+  ).example('$0 count -f foo.js', 'count the lines in the given file')
   .alias('f', 'file')
   .nargs('f', 1)
   .describe('f', 'Load a file')
